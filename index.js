@@ -1,7 +1,7 @@
 const puppeteer = require('puppeteer');
 const fs = require('fs');
 
-const delayBeforeFailing = 10*60*1000;
+const delayBeforeFailing = 60*60*1000;
 const downloadFileName = 'sequences.fasta';
 
 function waitForFile(fileName) {
