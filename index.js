@@ -61,8 +61,8 @@ async function main() {
   await clickNthListboxContaining(1, "Geo Location");
   await page.click("button.btn-block.point-right");
 
-  // Add Nucleotide Completeness
-  await clickNthListboxContaining(1, "Nucleotide Completeness");
+  // Add Nuc Completeness
+  await clickNthListboxContaining(1, "Nuc Completeness");
   await page.click("button.btn-block.point-right");
 
   // Remove GenBank Title
@@ -70,7 +70,9 @@ async function main() {
   await page.click("button.btn-block.point-left");
 
   // Finally, click download button
-  await page.click(".btn.btn-success.ncbi-download-btn");
+  // (The selector is copied from devtools; for some reason it won't be able to
+  // find the node if we use a simpler selector like those above.)
+  await page.click(".form-wrapper > span:nth-child(2) > button:nth-child(4)");
 
   const isSuccessful = await Promise.race([
     waitForFile(downloadFileName),
